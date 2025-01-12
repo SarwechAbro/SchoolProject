@@ -13,7 +13,7 @@ class StudentAdmin(admin.ModelAdmin):
 
 @admin.register(Class)
 class ClassAdmin(admin.ModelAdmin):
-    list_display = ['id','name']
+    list_display = ['name']
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
@@ -22,7 +22,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Chapter)
 class ChapterAdmin(admin.ModelAdmin):
-    list_display = ['id','name']
+    list_display = ['name']
 
 
 @admin.register(Lecture)
