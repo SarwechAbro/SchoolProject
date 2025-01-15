@@ -20,7 +20,7 @@ class Teacher(models.Model):
     designation = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
     class_id = models.ManyToManyField(Class, blank=True)
-    course_id = models.ForeignKey(Course, on_delete=models.CASCADE, null=True,  blank=True)
+    course_id = models.ManyToManyField(Course, blank=True)
     def __str__(self):
         return self.name
 
