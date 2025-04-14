@@ -1,6 +1,6 @@
 from .models import Teacher, Student, Class, Course, Chapter, Lecture
 from .serializers import CourseSerializer , TeacherSerializer, StudentSerializer, ClassSerializer, ChapterSerializer, LectureSerializer
-from rest_framework import generics
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.response import Response
 from rest_framework import status
@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 
 #Teacher APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class TeacherAPI(generics.ListCreateAPIView):
+class TeacherAPI(ListCreateAPIView):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
 
@@ -21,7 +21,7 @@ class TeacherAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class TeacherDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class TeacherDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
     lookup_field = 'pk'
@@ -54,7 +54,7 @@ class TeacherDetailAPI(generics.RetrieveUpdateDestroyAPIView):
 
 #Student APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class StudentAPI(generics.ListCreateAPIView):
+class StudentAPI(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     def create(self, request, *args, **kwargs):
@@ -64,7 +64,7 @@ class StudentAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class StudentDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class StudentDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     lookup_field = 'pk'
@@ -99,7 +99,7 @@ class StudentDetailAPI(generics.RetrieveUpdateDestroyAPIView):
     
 #Class APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class ClassAPI(generics.ListCreateAPIView):
+class ClassAPI(ListCreateAPIView):
     queryset = Class.objects.all()
     serializer_class = ClassSerializer
 
@@ -110,7 +110,7 @@ class ClassAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class ClassDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class ClassDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Class.objects.all()
     serializer_class = ClassSerializer
     lookup_field = 'pk'
@@ -144,7 +144,7 @@ class ClassDetailAPI(generics.RetrieveUpdateDestroyAPIView):
 
 #Course APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class CourseAPI(generics.ListCreateAPIView):
+class CourseAPI(ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
@@ -155,7 +155,7 @@ class CourseAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class CourseDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class CourseDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     lookup_field = 'pk'
@@ -189,7 +189,7 @@ class CourseDetailAPI(generics.RetrieveUpdateDestroyAPIView):
 
 #Chapter APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class ChapterAPI(generics.ListCreateAPIView):
+class ChapterAPI(ListCreateAPIView):
     queryset = Chapter.objects.all()
     serializer_class = ChapterSerializer
 
@@ -200,7 +200,7 @@ class ChapterAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class ChapterDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class ChapterDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Chapter.objects.all()
     serializer_class = ChapterSerializer
     lookup_field = 'pk'
@@ -234,7 +234,7 @@ class ChapterDetailAPI(generics.RetrieveUpdateDestroyAPIView):
 
 #Lecture APIs
 @method_decorator(csrf_exempt, name='dispatch')
-class LectureAPI(generics.ListCreateAPIView):
+class LectureAPI(ListCreateAPIView):
     queryset = Lecture.objects.all()
     serializer_class = LectureSerializer
 
@@ -245,7 +245,7 @@ class LectureAPI(generics.ListCreateAPIView):
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 @method_decorator(csrf_exempt, name='dispatch')
-class LectureDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class LectureDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Lecture.objects.all()
     serializer_class = LectureSerializer
     lookup_field = 'pk'
