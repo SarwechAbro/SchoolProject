@@ -1,9 +1,6 @@
 from .models import Teacher, Student, Class, Course, Chapter, Lecture
 from .serializers import CourseSerializer , TeacherSerializer, StudentSerializer, ClassSerializer, ChapterSerializer, LectureSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.exceptions import NotFound, ValidationError
-from rest_framework.response import Response
-from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
@@ -28,8 +25,8 @@ class TeacherDetailAPI(RetrieveUpdateDestroyAPIView):
 class StudentAPI(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
- 
-   
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class StudentDetailAPI(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
