@@ -1,16 +1,21 @@
 from django.db import models
 
+
+# Class Model
 class Class(models.Model):
     name = models.CharField(max_length=250)
     def __str__(self):
         return self.name
     
 
+# Course Model
 class Course(models.Model):
     name = models.CharField(max_length=255)
     def __str__(self):
         return self.name
 
+
+# Teacher Model
 class Teacher(models.Model):
     employee_id = models.IntegerField(default=0)
     name = models.CharField(max_length=250)
@@ -25,6 +30,7 @@ class Teacher(models.Model):
         return self.name
 
 
+# Student Model
 class Student(models.Model):
     name = models.CharField(max_length=250)
     email = models.EmailField()
@@ -37,6 +43,7 @@ class Student(models.Model):
         return self.name
 
 
+# Chapter Model
 class Chapter(models.Model):
     name = models.CharField(max_length=255)  
     course_id = models.ForeignKey(Course, on_delete=models.CASCADE, null=True,  blank=True) 
@@ -44,6 +51,7 @@ class Chapter(models.Model):
         return self.name 
 
 
+# Lecture Model
 class Lecture(models.Model):
     name = models.CharField(max_length=255)
     file = models.FileField(upload_to='lectures/', blank=True, null=True)
